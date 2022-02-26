@@ -43,3 +43,7 @@ func GetDSN() string {
 
 	return getDSN(username, password, host, port, database)
 }
+
+func GetGormDB() *gorm.DB {
+	return gormDB
+}
