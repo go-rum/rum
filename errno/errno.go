@@ -9,8 +9,14 @@ type Errno struct {
 	Message string
 }
 
-func (err *Errno) Error() string {
-	return err.Message
+func (en *Errno) Error() string {
+	return en.Message
+}
+
+func (en *Errno) AddError(err error) *Errno {
+	en.Message += ": " + err.Error()
+
+	return en
 }
 
 func New(code int, message string) *Errno {
