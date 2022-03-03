@@ -6,12 +6,19 @@ import (
 	"net/http"
 )
 
-func Wrong(ctx *gin.Context, err *errno.Errno) {
+func WrongWithErrno(ctx *gin.Context, err error) {
 	code, msg := errno.Decode(err)
 
 	ctx.JSON(http.StatusOK, gin.H{
 		"code":    code,
 		"message": msg,
+	})
+}
+
+func WrongWithMessage(ctx *gin.Context, code int, message string) {
+	ctx.JSON(http.StatusOK, gin.H{
+		"code":    code,
+		"message": message,
 	})
 }
 
