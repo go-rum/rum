@@ -35,6 +35,6 @@ func Decode(err error) (int, string) {
 	case *Errno:
 		return t.Code, t.Message
 	default:
-		return InternalServerError.Code, InternalServerError.Message
+		return InternalServerError.Code, InternalServerError.Message + ": " + err.Error()
 	}
 }
